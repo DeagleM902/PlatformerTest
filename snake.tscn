@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://mm57v7ov6dn8"]
+
+[ext_resource type="Texture2D" uid="uid://df3nb61auto48" path="res://platformer files/characters.png" id="1_bb5f7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kruyl"]
+atlas = ExtResource("1_bb5f7")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46bwf"]
+atlas = ExtResource("1_bb5f7")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baynq"]
+atlas = ExtResource("1_bb5f7")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vrsl"]
+atlas = ExtResource("1_bb5f7")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55fgt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kruyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46bwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baynq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vrsl")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utt3w"]
+size = Vector2(16, 14)
+
+[node name="Snake" type="CharacterBody2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_55fgt")
+animation = &"walk"
+frame = 2
+frame_progress = 0.753132
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_utt3w")

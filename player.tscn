@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://d04v0ei4mvqwf"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_djbn8"]
+[ext_resource type="Texture2D" uid="uid://df3nb61auto48" path="res://platformer files/characters.png" id="1_smcgq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52p86"]
+atlas = ExtResource("1_smcgq")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk6bl"]
+atlas = ExtResource("1_smcgq")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpyld"]
+atlas = ExtResource("1_smcgq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyndv"]
+atlas = ExtResource("1_smcgq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4o60"]
+atlas = ExtResource("1_smcgq")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlhwo"]
+atlas = ExtResource("1_smcgq")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft7du"]
+atlas = ExtResource("1_smcgq")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dg6vu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52p86")
+}],
+"loop": true,
+"name": &"jump_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk6bl")
+}],
+"loop": true,
+"name": &"jump_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpyld")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyndv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4o60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlhwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft7du")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjerr"]
+size = Vector2(15, 22)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_djbn8")
+SPEED = 150.0
+JUMP_VELOCITY = -350.0
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_dg6vu")
+animation = &"stand"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_vjerr")
